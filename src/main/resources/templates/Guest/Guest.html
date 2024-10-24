@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html style=" height: 100%;">
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Посетители</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="bodys">
+<div class="container-fluid">
+    <nav class="navbar navbar-light snav" >
+        <div class="container-fluid snav">
+            <a class="navbar-brand"  href="/">
+                <img class="logo" th:src="@{/img/play1.png}" alt="CyberPlay" width="80" height="80"/>
+            </a>
+            <div class="d-inline-flex align-items-center">
+                <a class="list-group-item list-group-iteminfo item hrefitem btn-menu comforta-500"  href="/Status">Статусы</a>
+                <a class="list-group-item list-group-iteminfo item hrefitem btn-menu comforta-500"  href="/Computer">Компьютеры/Консоли</a>
+                <a class="list-group-item list-group-iteminfo item hrefitem btn-menu comforta-500"  href="/Guest">Посетители</a>
+                <a class="list-group-item list-group-iteminfo item hrefitem btn-menu comforta-500"  href="/Visit">Учет аренды</a>
+                <form th:action="@{/logout}" method="post">
+                    <button class="list-group-item list-group-iteminfo item hrefitem btn-auth comforta-500"  th:text="${account}" type="submit"></button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid comforta-500">
+        <div class="mb-5 mb-lg-5 mb-md-5 mb-sm-5 mb-xl-5 mb-xxl-5 p-4 p-lg-4 p-md-4 p-sm-4 p-xl-4 p-xxl-4"></div>
+        <div class="row justify-content-center ">
+            <div class="col-9 col-md-7 ps-5 pe-5 ">
+                <h3 class="gradient-table-text ">Посетители</h3>
+                <table class="table whitetext comforta-500">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Фамилия</th>
+                        <th scope="col">Имя</th>
+                        <th scope="col">Отчество</th>
+                        <th scope="col">Паспорт</th>
+                        <th scope="col">Адрес</th>
+                        <th scope="col">Телефон</th>
+                        <th scope="col">Редактировать</th>
+                        <th scope="col">Удалить</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-bord">
+                    <tr class="child-table" th:each="var : ${guests}">
+                        <td th:text="${var.getId()}"></td>
+                        <td th:text="${var.getSurname()}"></td>
+                        <td th:text="${var.getName()}"></td>
+                        <td th:text="${var.getPatronymic()}"></td>
+                        <td th:text="${var.getDocument()}"></td>
+                        <td th:text="${var.getAddress()}"></td>
+                        <td th:text="${var.getPhone()}"></td>
+                        <td>
+                            <form action="#" th:action="@{/Guest/update}" th:object="${guest}" method="post">
+                                <input name="id" type="hidden" th:value="${var.getId()}"/>
+                                <input name="surname" type="hidden" th:value="${var.getSurname()}"/>
+                                <input name="name" type="hidden" th:value="${var.getName()}"/>
+                                <input name="patronymic" type="hidden" th:value="${var.getPatronymic()}"/>
+                                <input name="document" type="hidden" th:value="${var.getDocument()}"/>
+                                <input name="address" type="hidden" th:value="${var.getAddress()}"/>
+                                <input name="phone" type="hidden" th:value="${var.getPhone()}"/>
+                                <button type="submit" class="btn btn-outline-primary btn-edits"><img width="32" height="32" th:src="@{/img/edit.png}"/></button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="#" th:action="@{/Guest/delete}" th:object="${var}" method="post">
+                                <input name="id" type="hidden" th:value="${var.getId()}"/>
+                                <button type="submit" class="btn btn-outline-primary btn-delete"><img width="32" height="32" th:src="@{/img/delete.png}"/></button>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-5 col-md-5 ps-5 pe-5">
+                <form method="POST" th:action="@{/Guest/create}" th:object="${guest}">
+                    <h3 class="gradient-table-text">Новая запись</h3>
+                    <div class="mb-3 whitetext">
+                        <div class="col-sm-6">
+                            <hr>
+                            <label for="surname" class="col-sm-5 col-form-label whitetext" >Фамилия</label>
+                            <input placeholder="Фамилия" type="text" name="surname" class="form-control" id="surname" th:field="*{surname}"/>
+                            <div class="alert alert-warning" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></div>
+                            <br>
+                            <label for="name" class="col-sm-5 col-form-label whitetext" >Имя</label>
+                            <input placeholder="Имя" type="text" name="name" class="form-control" id="name" th:field="*{name}"/>
+                            <div class="alert alert-warning" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+                            <br>
+                            <label for="patronymic" class="col-sm-5 col-form-label whitetext" >Отчество</label>
+                            <input placeholder="Отчество" type="text" name="patronymic" class="form-control" id="patronymic" th:field="*{patronymic}"/>
+                            <div class="alert alert-warning" th:if="${#fields.hasErrors('patronymic')}" th:errors="*{patronymic}"></div>
+                            <br>
+                            <label for="document" class="col-sm-5 col-form-label whitetext" >Паспорт</label>
+                            <input placeholder="Паспорт" type="text" name="document" class="form-control" id="document" th:field="*{document}"/>
+                            <div class="alert alert-warning" th:if="${#fields.hasErrors('document')}" th:errors="*{document}"></div>
+                            <br>
+                            <label for="address" class="col-sm-5 col-form-label whitetext" >Адрес</label>
+                            <input placeholder="Адрес" type="text" name="address" class="form-control" id="address" th:field="*{address}"/>
+                            <div class="alert alert-warning" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
+                            <br>
+                            <label for="phone" class="col-sm-5 col-form-label whitetext" >Телефон</label>
+                            <input placeholder="Телефон" type="text" name="phone" class="form-control" id="phone" th:field="*{phone}"/>
+                            <div class="alert alert-warning" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
+                        </div>
+                    </div>
+                    <p>
+                        <br>
+                        <button type="submit" class="btn-add">Добавить</button>
+                        <br>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="mb-5 mb-lg-5 mb-md-5 mb-sm-5 mb-xl-5 mb-xxl-5 p-4 p-lg-4 p-md-4 p-sm-4 p-xl-4 p-xxl-4"></div>
+    <div class="mb-5 mb-lg-5 mb-md-5 mb-sm-5 mb-xl-5 mb-xxl-5 p-4 p-lg-4 p-md-4 p-sm-4 p-xl-4 p-xxl-4"></div>
+    <div class="p-4 p-lg-4 p-md-4 p-sm-4 p-xl-4 p-xxl-4 fixed-bottom align-items-center" style="background: #121212">
+        <div class="row row-cols-lg-5">
+            <div class="col col-md-4 col-lg-4 col-xl-4 col-xxl-4 col-6">
+                <h3 class="text-center card-text comforta-500">Java Spring</h3>
+            </div>
+            <div class="col col-md-4 col-lg-4 col-xl-4 col-xxl-4 col-6">
+                <h3 class="text-center card-text comforta-500">PostgreSQL</h3>
+            </div>
+            <div class="col col-md-4 col-lg-4 col-xl-4 col-xxl-4 col-6">
+                <h3 class="text-center card-text comforta-500">Bootstrap 5</h3>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

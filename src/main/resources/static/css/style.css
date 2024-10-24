@@ -1,0 +1,187 @@
+
+.comforta-500{
+    font-family: "Comfortaa", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+.comforta-700{
+    font-family: "Comfortaa", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+.comforta-300{
+    font-family: "Comfortaa", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.pirata {
+    font-family: "Pirata One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.snav{background: rgba(212, 60, 246, 0.35);}
+.whitetext{color: white;}
+.bodys {
+    margin: 0;
+    background: #2f3130;
+    color: #fff;
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+.html{background: #6c6c6c;}
+.auth{
+    background: rgba(212, 60, 246, 0.35);
+    border: 45px solid ;
+    border-radius: 30px;
+}
+.logo{
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: -30px
+}
+.btn-menu{
+    background: transparent;
+    border: transparent;
+    color: white;
+    font-size: 20px;
+    transition: background 1s;
+}
+.btn-menu:hover{
+    background: rgba(62, 13, 99, 0.45);
+    font-size: 20px;
+    color: white;
+    transition: background 1s;
+
+}
+.btn-auth{
+    margin-right: 20px;
+    background: transparent;
+    border: transparent;
+    color: white;
+    font-size: 20px;
+    transition: background 1s;
+}
+.btn-auth:hover{
+    background: rgba(62, 13, 99, 0.45);
+    font-size: 20px;
+    transition: background 1s;
+}
+
+.gradient-text{
+    font-size: 72px;
+    background-size: 200% auto;
+    background-repeat: repeat;
+    background-image: linear-gradient(90deg, #DD4AEA, #484AFF, #DD4AEA, #484AFF, #DD4AEA );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-flow 7s ease infinite;
+}
+
+.gradient-href-text:hover{
+    background-size: 200% auto;
+    background-repeat: repeat;
+    background-image: linear-gradient(90deg, #DD4AEA, #484AFF, #DD4AEA, #484AFF, #DD4AEA );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-flow 7s ease infinite;
+}
+
+.gradient-table-text{
+    background-size: 200% auto;
+    background-repeat: repeat;
+    background-image: linear-gradient(90deg, #DD4AEA, #484AFF, #DD4AEA, #484AFF, #DD4AEA );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-flow 7s ease infinite;
+}
+
+
+@keyframes text-flow {
+    from {background-position: 0% center;}
+    to {background-position: 200% center;}
+}
+
+.btn-reg{
+    font-size: 25px;
+    padding: 10px 25px;
+    border: 2px solid transparent;
+    background: transparent;
+    /*border: transparent;*/
+    color: white;
+}
+.btn-reg:hover{
+    padding: 10px 25px;
+    font-size: 25px;
+    background-size: 200% auto;
+    background-repeat: repeat;
+    background-image: linear-gradient(90deg, #DD4AEA, #484AFF, #DD4AEA );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-flow 7s ease infinite;
+}
+
+.btn-edit{
+    border: 2px solid
+}
+
+.label-form{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.child-table:nth-child(even){
+    background-color: rgba(142, 56, 162, 0.52);
+}
+
+.table-bord{
+    border: 2px solid white;
+}
+
+.btn-edits{
+    background-color: transparent;
+    border: 1px solid transparent;
+}
+
+.btn-edits:hover{
+    background-color: rgba(198, 198, 198, 0.24);
+    border: 1px solid transparent;
+}
+
+
+.btn-delete{
+    background-color: transparent;
+    border: 1px solid transparent;
+}
+
+.btn-delete:hover{
+    background-color: rgba(198, 198, 198, 0.24);
+    border: 1px solid transparent;
+}
+
+.btn-add{
+    font-size: 25px;
+    color: white;
+    background-color: transparent;
+    border: 1px solid transparent;
+}
+
+.btn-add:hover{
+    font-size: 25px;
+    color: white;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-size: 200% auto;
+    background-repeat: repeat;
+    background-image: linear-gradient(90deg, #DD4AEA, #484AFF, #DD4AEA );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-flow 7s ease forwards;
+}
+
